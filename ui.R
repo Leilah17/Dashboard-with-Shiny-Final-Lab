@@ -28,11 +28,16 @@ shinyUI(
       column(3, 
              wellPanel(
                p("Select a continuous variable and graph type (histogram or boxplot) to view on the right."),
-               radioButtons("continous_variable", "Continuous:",
-                 choices =c("age", "hours_per_week")
+               radioButtons(inputId = "continous_variable", 
+                            label = "Continuous:",
+                            choices = c("age", "hours_per_week"),
+                            selected = "hours_per_week"
                           ), 
-               radioButtons("graph_type", "Graph:",
-                  choices = c("histogram", "boxplot"))
+               radioButtons(inputId = "graph_type", 
+                            label = "Graph:",
+                            choices = c("histogram", "boxplot"),
+                            selected = "histogram"
+                           )
                )
              ),
       column(9,
