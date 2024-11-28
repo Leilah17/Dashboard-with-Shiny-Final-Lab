@@ -17,29 +17,29 @@ shinyUI(
                selectInput(
                  inputId = "country",
                  label = "Country:",
-                 choices = c("United-States", "Canada", "Mexico", "Germany", "Phillipines")
-                          )
-                      )# add select input 
-             )
-    ),
+                 choices = c("United-States", "Canada", "Mexico", "Germany", "Phillipines"),
+                 selected = "United-States"
+                          )# add select input 
+                      )
+            ),
     
     # TASK 3: Add second fluidRow to control how to plot the continuous variables
     fluidRow(
-      column(3, 
+     column(3, 
              wellPanel(
                p("Select a continuous variable and graph type (histogram or boxplot) to view on the right."),
                radioButtons(inputId = "continous_variable", 
                             label = "Continuous:",
-                            choices = c("age", "hours_per_week"),
-                            selected = "hours_per_week"
-                          ), 
+                            choices =c("age", "hours_per_week"),
+                            selected = "hours_per_week"),
+               
                radioButtons(inputId = "graph_type", 
                             label = "Graph:",
                             choices = c("histogram", "boxplot"),
-                            selected = "histogram"
-                           )
-               )
-             ),
+                            selected = "histogram")
+                      )
+            ),
+
       column(9,
              plotOutput("p1")
              )  
@@ -50,15 +50,18 @@ shinyUI(
       column(3, 
              wellPanel(
                p("Select a categorical variable to view bar chart on the right. Use the check box to view a stacked bar chart to combine the income levels into one graph. "),
-               radioButtons("categorical_variable", "Category:",
-                  c("education", "workclass", "sex")),
+               radioButtons(inputId = "categorical_variable",
+                            label = "Category:",
+                            choices = c("education", "workclass", "sex"),
+                            selected = "education"),
                checkboxInput("is_stacked", "Stack Bars", FALSE)
-               )
+                      )
              ),
       column(9,
              plotOutput("p2")
              )
     )
   
+)
 )
 )
