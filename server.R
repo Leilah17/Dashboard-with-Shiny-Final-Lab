@@ -21,8 +21,7 @@ shinyServer(function(input, output) {
       ggplot(df_country(), aes_string(x=input$continuous_variable)) +
         geom_histogram(color = "darkblue", fill = "lightblue") +  
         labs(y = "Number of People", title = paste("Trend of ", input$continuous_variable)) + 
-        facet_wrap(~prediction) +
-        theme_light()
+        facet_wrap(~prediction)
     }
     else {
       # Boxplot
@@ -30,8 +29,7 @@ shinyServer(function(input, output) {
         geom_boxplot(color = "darkblue", fill = "lightblue") +
         coord_flip() +
         labs(x = "Number of People", title=paste("Boxplot of ", input$continuous_variable)) +
-        facet_wrap(~prediction) +
-        theme_light()
+        facet_wrap(~prediction)
     }
     
   })
@@ -41,8 +39,7 @@ shinyServer(function(input, output) {
     # Bar chart
     p <- ggplot(df_country(), aes_string(x = input$categorical_variable)) +
       labs(y="Number of People", title=(paste("Trend of ", input$categorical_variable))) +  # labels
-      theme(axis.text.x = element_text(angle = 45), legend.position = "bottom") +
-      theme_light()
+      theme(axis.text.x = element_text(angle = 45), legend.position = "bottom") 
     
     if (input$is_stacked) {
       p + geom_bar(aes(fill=prediction))  # add bar geom and use prediction as fill
